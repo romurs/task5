@@ -14,12 +14,12 @@ class CsvFileManeger implements FileManager
     }
     fclose($fd);
   }
-  public function  writeFile(string $filename,string | object | array $data): void
+  public function  writeFile(string $filename, string | object | array $data): void
   {
-    if(gettype($data) === 'string'){
+    if (gettype($data) === 'string') {
       $fd = fopen($filename, "w");
       foreach ($data as $value) {
-        fputcsv($fd, explode(";", $value), ";"); 
+        fputcsv($fd, explode(";", $value), ";");
       }
       fwrite($fd, $data);
       fclose($fd);
