@@ -1,0 +1,16 @@
+{
+    "name": "roma/task5",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Roma\\Task5\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "romurs",
+            "email": "1romurs@gmail.com"
+        }
+    ],
+    "require": {}
+}
