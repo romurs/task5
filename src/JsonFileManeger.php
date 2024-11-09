@@ -6,7 +6,7 @@ use Roma\Task5\FileManager;
 
 class JsonFileManeger implements FileManager
 {
-  public function readFile($filename): void
+  public function readFile(string $filename): void
   {
     $fd = fopen($filename, "r");
     while(!feof($fd))
@@ -17,7 +17,7 @@ class JsonFileManeger implements FileManager
     }
     fclose($fd);
   }
-  public function  writeFile($filename, $data): void
+  public function  writeFile(string $filename,string | object | array $data): void
   {
     if(gettype($data) != "string"){
       $newData = json_encode($data, JSON_UNESCAPED_UNICODE);

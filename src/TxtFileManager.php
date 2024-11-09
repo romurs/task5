@@ -6,7 +6,7 @@ use Roma\Task5\FileManager;
 
 class TxtFileManeger implements FileManager
 {
-  public function readFile($filename): void
+  public function readFile(string $filename): void
   {
     $fd = fopen($filename, "r");
     while(!feof($fd))
@@ -16,10 +16,12 @@ class TxtFileManeger implements FileManager
     }
     fclose($fd);
   }
-  public function  writeFile($filename, $data): void
+  public function  writeFile(string $filename,string | object | array $data): void
   {
-    $fd = fopen($filename, "w");
-    fwrite($fd, $data);
-    fclose($fd);
+    if(gettype($data) === 'string'){
+      $fd = fopen($filename, "w");
+      fwrite($fd, $data);
+      fclose($fd);
+    }
   }
 }

@@ -6,7 +6,7 @@ use Roma\Task5\FileManager;
 
 class CsvFileManeger implements FileManager
 {
-  public function readFile($filename): void
+  public function readFile(string $filename): void
   {
     $fd = fopen($filename, "r");
     while (($row = fgetcsv($filename)) !== false) {
@@ -14,13 +14,15 @@ class CsvFileManeger implements FileManager
     }
     fclose($fd);
   }
-  public function  writeFile($filename, $data): void
+  public function  writeFile(string $filename,string | object | array $data): void
   {
-    $fd = fopen($filename, "w");
-    foreach ($data as $value) {
-      fputcsv($fd, explode(";", $value), ";"); 
-  }
-    fwrite($fd, $data);
-    fclose($fd);
+    if(gettype($data) === 'string'){
+      $fd = fopen($filename, "w");
+      foreach ($data as $value) {
+        fputcsv($fd, explode(";", $value), ";"); 
+      }
+      fwrite($fd, $data);
+      fclose($fd);
+    }
   }
 }
